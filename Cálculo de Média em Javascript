@@ -1,0 +1,86 @@
+// Lista de alunos
+let alunos = [];
+
+// Função para cadastrar um aluno
+function cadastrarAluno(nome, nota1, nota2) {
+    let media = (nota1 + nota2) / 2;
+
+    let aluno = {
+        nome: nome,
+        nota1: nota1,
+        nota2: nota2,
+        media: media
+    };
+
+    alunos.push(aluno);
+
+    console.log(`${nome} foi cadastrado.`);
+}
+
+// Listar todos os alunos
+function listarAlunos() {
+
+    console.log("\nLISTA DE ALUNOS");
+
+    alunos.forEach((aluno, indice) => {
+        console.log(
+            `${indice + 1} - ${aluno.nome} | Média: ${aluno.media.toFixed(2)}`
+        );
+    });
+}
+
+// Mostrar aprovados
+function mostrarAprovados() {
+
+    console.log("\nAPROVADOS");
+
+    alunos.forEach(aluno => {
+
+        if(aluno.media >= 6)
+        {
+            console.log(aluno.nome);
+        }
+
+    });
+}
+
+// Mostrar reprovados
+function mostrarReprovados() {
+
+    console.log("\nREPROVADOS");
+
+    alunos.forEach(aluno => {
+
+        if(aluno.media < 6)
+        {
+            console.log(aluno.nome);
+        }
+
+    });
+}
+
+// Média da turma
+function mediaDaTurma(){
+
+    let soma = 0;
+
+    alunos.forEach(aluno => {
+        soma += aluno.media;
+    });
+
+    let media = soma / alunos.length;
+
+    console.log("\nMédia da turma:", media.toFixed(2));
+}
+
+// Cadastro de exemplo
+
+cadastrarAluno("Ana",8,7);
+cadastrarAluno("Carlos",5,6);
+cadastrarAluno("Pedro",10,9);
+cadastrarAluno("Maria",4,5);
+
+listarAlunos();
+mostrarAprovados();
+mostrarReprovados();
+mediaDaTurma();
